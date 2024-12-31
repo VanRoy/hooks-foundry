@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: Hooks Foundry
+  threads:
+    virtual:
+      enabled: true
+  jpa:
+    open-in-view: false
+  mvc:
+    problemdetails:
+      enabled: true
+  docker:
+    compose:
+      skip:
+        in-tests: false
+  flyway:
+    clean-disabled: false
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      fail-on-empty-beans: false
+
+  kafka:
+#    bootstrap-servers: "localhost:9092"
+    consumer:
+      group-id: "hooks-foundry"
+      auto-offset-reset: earliest # earliest or latest
+      value-deserializer: "io.cloudevents.kafka.CloudEventDeserializer"
+      properties:
+        'partition.assignment.strategy': org.apache.kafka.clients.consumer.RoundRobinAssignor
+        'metadata.max.age.ms': 1000
+
+logging:
+  level:
+    org.apache.kafka: warn
+    org.springframework.kafka: debug
+    org.springframework.jdbc.core.JdbcTemplate: debug

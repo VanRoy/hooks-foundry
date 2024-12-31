@@ -1,0 +1,24 @@
+import org.jspecify.annotations.NullMarked;
+
+@NullMarked
+module com.github.vanroy.hooksfoundry {
+    requires org.slf4j;
+    requires io.cloudevents.api;
+    requires event.ruler;
+    requires io.cloudevents.formats.jackson;
+    requires static lombok;
+    requires org.jspecify;
+    requires org.postgresql.jdbc;
+    requires org.yaml.snakeyaml;
+    requires spring.boot;
+    requires spring.boot.autoconfigure;
+    requires spring.context;
+    requires spring.core;
+    requires spring.data.commons;
+    requires spring.data.jdbc;
+    requires spring.data.relational;
+    requires spring.kafka;
+    requires spring.messaging;
+    requires spring.web;
+    requires com.fasterxml.jackson.databind;
+}

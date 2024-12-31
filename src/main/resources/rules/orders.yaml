@@ -1,0 +1,20 @@
+pattern: |-
+  {
+    "type": ["order.created"]
+  }
+
+#eventType: "order.created"
+eventTypePath: "$.type"
+
+tenantIdPath: "$.data.clientId"
+
+transformer:
+  variables:
+    order_id: "$.data.orderId"
+    pn: "$.data.productName"
+  template: |-
+    {
+      "order_id": <order_id>,
+      "completed": true,
+      "product_name": <pn>
+    }
